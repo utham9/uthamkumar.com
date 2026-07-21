@@ -100,7 +100,7 @@ body {
    ============================================================ */
 .shell {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 20% 80%;
   min-height: 100vh;
   background-image: linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -110,14 +110,12 @@ body {
 
 /* ---- Left sticky rail ---- */
 .rail {
-  border-right: 1px solid var(--border);
   background: var(--bg);
   position: sticky;
   top: 0;
-  height: 100vh;
+  align-self: start; /* size to content, not the full grid-row height */
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 }
 .rail-header {
   padding: 22px 28px 16px;
@@ -150,7 +148,6 @@ body {
   line-height: 1;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  white-space: nowrap;
   margin: 0 0 5px;
 }
 .moniker .dot {
@@ -233,6 +230,7 @@ body {
 .main {
   background: var(--bg);
   min-height: 100vh;
+  border-left: 1px solid var(--border); /* continuous full-height divider */
 }
 .screen {
   padding: 56px;
@@ -925,7 +923,7 @@ body {
    ============================================================ */
 @media (max-width: 1024px) {
   .shell {
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 26% 74%;
   }
   .rail-header {
     padding: 32px 28px 20px;
@@ -954,6 +952,9 @@ body {
     height: auto;
     border-right: none;
     border-bottom: 1px solid var(--border);
+  }
+  .main {
+    border-left: none;
   }
   .rail-header {
     padding: 28px 20px 20px;
