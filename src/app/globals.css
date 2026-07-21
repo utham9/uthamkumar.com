@@ -120,14 +120,14 @@ body {
   overflow-y: auto;
 }
 .rail-header {
-  padding: 28px 32px 20px;
+  padding: 22px 28px 16px;
   border-bottom: 1px solid var(--border);
 }
 .status {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 .status-dot {
   width: 8px;
@@ -146,12 +146,12 @@ body {
 .moniker {
   font-family: var(--fd);
   font-weight: 700;
-  font-size: 34px;
+  font-size: 31px;
   line-height: 1;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   white-space: nowrap;
-  margin: 0 0 6px;
+  margin: 0 0 5px;
 }
 .moniker .dot {
   color: var(--accent);
@@ -161,26 +161,26 @@ body {
   font-size: 13px;
   color: var(--accent);
   letter-spacing: 0.08em;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 .bio {
   font-size: 13px;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--text);
   max-width: 38ch;
 }
 
 /* ---- Nav matrix ---- */
 .nav-matrix {
-  flex: 1 0 auto;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
 }
 .nav-item {
   box-sizing: border-box;
   cursor: pointer;
-  height: 48px;
-  padding: 0 32px;
+  height: 42px;
+  padding: 0 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -219,7 +219,7 @@ body {
 /* ---- Footer ---- */
 .rail-footer {
   flex: 0 0 auto;
-  padding: 16px 32px;
+  padding: 13px 28px;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
