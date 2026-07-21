@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#050505; --surface:#0C0C0E; --surface2:#121215; --text:#E2E8F0; --muted:#475569;
+    --accent:#00E5FF; --primary:#00FF41; --border:#1E293B;
+    --fd:'Space Grotesk',sans-serif; --fm:'JetBrains Mono',monospace; --fu:'Fira Code',monospace;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--fm);}
+  ::selection{background:var(--primary);color:#050505;}
+  ::-webkit-scrollbar{width:10px;height:10px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:var(--border);}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,255,65,.5);}50%{opacity:.5;box-shadow:0 0 0 6px rgba(0,255,65,0);}}
+  @keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  input,textarea{font-family:var(--fm);}
+</style>
+</helmet>
+<div style="display:grid;grid-template-columns:40% 60%;min-height:100vh;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;background-position:-1px -1px;">
+
+  <!-- LEFT STICKY RAIL -->
+  <aside style="border-right:1px solid var(--border);background:var(--bg);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;overflow-y:auto;">
+    <div style="padding:40px 40px 24px;border-bottom:1px solid var(--border);">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+        <span style="width:8px;height:8px;background:var(--primary);border-radius:50%;animation:pulse 2s infinite;"></span>
+        <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--primary);">Status: Available for Q3 2026</span>
+      </div>
+      <h1 style="font-family:var(--fd);font-weight:700;font-size:38px;line-height:1;letter-spacing:-.01em;text-transform:uppercase;white-space:nowrap;margin:0 0 6px;">Utham Kumar<span style="color:var(--accent);">.</span></h1>
+      <div style="font-family:var(--fu);font-size:13px;color:var(--accent);letter-spacing:.08em;margin-bottom:20px;">// LEAD_ARCHITECT.QUALITY_ENGINEERING</div>
+      <p style="font-size:14px;line-height:1.6;color:var(--text);max-width:38ch;">Quality Engineering leader with 14+ years architecting scalable test-automation platforms. Building AI-augmented, agentic quality ecosystems — LangGraph multi-agent systems, RAG agents and self-healing automation bridging raw compute and release velocity.</p>
+    </div>
+
+    <nav style="flex:1 0 auto;display:flex;flex-direction:column;">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <button onClick="{{ n.go }}" data-active="{{ n.active }}" style="all:unset;box-sizing:border-box;cursor:pointer;height:58px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);border-left:4px solid {{ n.edge }};background:{{ n.bg }};transition:background .15s,border-color .15s;" style-hover="background:var(--surface2);border-left-color:var(--accent);">
+          <span style="font-family:var(--fd);font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:.02em;color:{{ n.fg }};">{{ n.label }}</span>
+          <span style="font-family:var(--fu);font-size:12px;color:var(--muted);">{{ n.idx }}</span>
+        </button>
+      </sc-for>
+    </nav>
+
+    <div style="flex:0 0 auto;padding:20px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-family:var(--fu);font-size:11px;color:var(--muted);letter-spacing:.06em;">
+      <span>HYDERABAD · IN</span>
+      <span>UTHAMKUMAR.COM</span>
+    </div>
+  </aside>
+
+  <!-- RIGHT CONTENT -->
+  <main style="background:var(--bg);min-height:100vh;">
+
+    <!-- HOME -->
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <section style="padding:56px;animation:fadeUp .4s ease both;">
+        <div style="font-family:var(--fu);font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:40px;">guest@portfolio:~$ cat profile.md</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:48px;">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+            <div style="background:var(--surface);padding:28px;">
+              <div style="font-family:var(--fd);font-weight:700;font-size:44px;line-height:1;color:var(--primary);">{{ s.n }}</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:.04em;text-transform:uppercase;">{{ s.l }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <h2 style="font-family:var(--fd);font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.02em;margin:0 0 20px;border-bottom:1px solid var(--border);padding-bottom:16px;">Core_Stack<span style="color:var(--accent);">[]</span></h2>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;">
+          <sc-for list="{{ coreStack }}" as="t" hint-placeholder-count="10">
+            <span style="font-family:var(--fu);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);border:1px solid var(--border);padding:6px 12px;">{{ t }}</span>
+          </sc-for>
+        </div>
+        <div style="border:1px solid var(--border);background:var(--surface);padding:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+          <div>
+            <div style="font-family:var(--fd);font-weight:700;font-size:22px;text-transform:uppercase;">Résumé.pdf</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:4px;">Full career history — 14 years, five global clients.</div>
+          </div>
+          <a href="/uthamkumar-resume.pdf" style="text-decoration:none;font-family:var(--fu);font-weight:600;font-size:14px;color:#050505;background:var(--primary);padding:14px 28px;border:1px solid var(--primary);transition:box-shadow .2s;" style-hover="box-shadow:0 0 15px rgba(0,255,65,.5);">DOWNLOAD ↓</a>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ABOUT -->
+    <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+      <section style="padding:56px;animation:fadeUp .4s ease both;">
+        <div style="font-family:var(--fu);font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;">guest@portfolio:~$ cat about.md</div>
+        <h2 style="font-family:var(--fd);font-weight:700;font-size:40px;text-transform:uppercase;margin:0 0 24px;">About</h2>
+        <p style="font-size:15px;line-height:1.7;color:var(--text);max-width:64ch;margin:0 0 16px;">Engineering leader with 14+ years designing scalable test-automation platforms adopted across teams and business units. I pioneered the transition from traditional QA to AI-augmented quality ecosystems — stateful multi-agent systems built with LangGraph and context-aware RAG agents that agentify SDLC testing: autonomous test generation, execution validation and edge-case discovery.</p>
+        <p style="font-size:15px;line-height:1.7;color:var(--muted);max-width:64ch;margin:0 0 40px;">I stay hands-on with LLM integrations and AI coding copilots combined with Selenium, Playwright and Appium to build self-healing automation, wired into CI/CD quality gates and observability dashboards. I mentor a 25+ engineer organisation and drive cross-functional initiatives across regions.</p>
+
+        <h3 style="font-family:var(--fu);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin:0 0 16px;">// core_competencies</h3>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px;">
+          <sc-for list="{{ competencies }}" as="c" hint-placeholder-count="12">
+            <div style="background:var(--surface);padding:14px 18px;font-size:13px;color:var(--text);display:flex;gap:10px;"><span style="color:var(--primary);">▸</span>{{ c }}</div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+          <div>
+            <h3 style="font-family:var(--fu);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin:0 0 16px;">// key_achievements</h3>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <sc-for list="{{ achievements }}" as="a" hint-placeholder-count="4">
+                <div style="font-size:13px;line-height:1.55;color:var(--text);border-left:2px solid var(--primary);padding-left:14px;">{{ a }}</div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <h3 style="font-family:var(--fu);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin:0 0 16px;">// education &amp; certs</h3>
+            <div style="border-top:1px solid var(--border);">
+              <sc-for list="{{ education }}" as="e" hint-placeholder-count="5">
+                <div style="padding:14px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:16px;align-items:baseline;">
+                  <div>
+                    <div style="font-family:var(--fd);font-weight:500;font-size:15px;">{{ e.title }}</div>
+                    <div style="font-family:var(--fu);font-size:12px;color:var(--muted);">{{ e.org }}</div>
+                  </div>
+                  <span style="font-family:var(--fu);font-size:11px;color:var(--accent);white-space:nowrap;">{{ e.year }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- PROJECTS -->
+    <sc-if value="{{ isArchive }}" hint-placeholder-val="{{ false }}">
+      <section style="padding:56px;animation:fadeUp .4s ease both;">
+        <div style="font-family:var(--fu);font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;">guest@portfolio:~$ ls ./archive</div>
+        <h2 style="font-family:var(--fd);font-weight:700;font-size:40px;text-transform:uppercase;margin:0 0 8px;">Projects</h2>
+        <p style="font-size:14px;color:var(--muted);margin:0 0 32px;">Shipped platforms &amp; consulting case studies.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;">
+          <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+            <div style="border:1px solid var(--border);background:var(--surface);display:flex;flex-direction:column;transition:border-color .2s;" style-hover="border-color:var(--primary)">
+              <div style="height:120px;border-bottom:1px solid var(--border);background-image:repeating-linear-gradient(45deg,var(--surface2) 0 10px,var(--surface) 10px 20px);display:flex;align-items:flex-start;justify-content:flex-end;padding:14px;">
+                <span style="font-family:var(--fd);font-size:22px;color:var(--accent);">↗</span>
+              </div>
+              <div style="padding:22px;display:flex;flex-direction:column;gap:12px;flex:1;">
+                <div style="font-family:var(--fu);font-size:11px;color:var(--primary);letter-spacing:.06em;">{{ p.metric }}</div>
+                <h3 style="font-family:var(--fd);font-weight:700;font-size:19px;text-transform:uppercase;margin:0;line-height:1.1;">{{ p.title }}</h3>
+                <p style="font-size:13px;line-height:1.55;color:var(--muted);flex:1;">{{ p.body }}</p>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                  <sc-for list="{{ p.stack }}" as="t" hint-placeholder-count="4">
+                    <span style="font-family:var(--fu);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);border:1px solid var(--border);padding:4px 8px;">{{ t }}</span>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- EXPERIENCE -->
+    <sc-if value="{{ isExp }}" hint-placeholder-val="{{ false }}">
+      <section style="padding:56px;animation:fadeUp .4s ease both;">
+        <div style="font-family:var(--fu);font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;">guest@portfolio:~$ git log --career</div>
+        <h2 style="font-family:var(--fd);font-weight:700;font-size:40px;text-transform:uppercase;margin:0 0 32px;">Experience</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <sc-for list="{{ experience }}" as="job" hint-placeholder-count="5">
+            <div style="border:1px solid var(--border);background:var(--surface);padding:26px;">
+              <div style="display:flex;justify-content:space-between;gap:20px;align-items:baseline;flex-wrap:wrap;margin-bottom:16px;">
+                <div>
+                  <h3 style="font-family:var(--fd);font-weight:700;font-size:21px;text-transform:uppercase;margin:0;">{{ job.role }}</h3>
+                  <div style="font-family:var(--fu);font-size:13px;color:var(--accent);margin-top:4px;">{{ job.org }}</div>
+                  <div style="font-family:var(--fu);font-size:11px;color:var(--muted);margin-top:2px;">{{ job.place }}</div>
+                </div>
+                <span style="font-family:var(--fu);font-size:12px;color:var(--primary);white-space:nowrap;">{{ job.dates }}</span>
+              </div>
+              <ul style="margin:0;padding-left:18px;columns:2;column-gap:40px;">
+                <sc-for list="{{ job.bullets }}" as="b" hint-placeholder-count="3">
+                  <li style="font-size:13px;line-height:1.55;color:var(--text);margin-bottom:8px;break-inside:avoid;">{{ b }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- SKILLS -->
+    <sc-if value="{{ isSkills }}" hint-placeholder-val="{{ false }}">
+      <section style="padding:56px;animation:fadeUp .4s ease both;">
+        <div style="font-family:var(--fu);font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;">guest@portfolio:~$ cat stack.json</div>
+        <h2 style="font-family:var(--fd);font-weight:700;font-size:40px;text-transform:uppercase;margin:0 0 32px;">Skills</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);">
+          <sc-for list="{{ skillGroups }}" as="g" hint-placeholder-count="8">
+            <div style="background:var(--surface);padding:22px;">
+              <h4 style="font-family:var(--fu);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin:0 0 14px;">{{ g.name }}</h4>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="5">
+                  <span style="font-family:var(--fu);font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--text);border:1px solid var(--border);padding:5px 10px;">{{ it }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- BRAINWAVES -->
+    <sc-if value="{{ isBrain }}" hint-placeholder-val="{{ false }}">
+      <section style="padding:56px;animation:fadeUp .4s ease both;">
+        <div style="font-family:var(--fu);font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;">guest@portfolio:~$ tail -f brainwaves.log</div>
+        <h2 style="font-family:var(--fd);font-weight:700;font-size:40px;text-transform:uppercase;margin:0 0 8px;">Brainwaves</h2>
+        <p style="font-size:14px;color:var(--muted);margin:0 0 32px;">Long-form notes on agentic quality. <span style="color:var(--border);">[placeholder — swap for real essays]</span></p>
+        <div style="border-top:1px solid var(--border);">
+          <sc-for list="{{ posts }}" as="post" hint-placeholder-count="3">
+            <a href="#" style="text-decoration:none;color:inherit;display:grid;grid-template-columns:120px 1fr auto;gap:20px;align-items:baseline;padding:22px 8px;border-bottom:1px solid var(--border);transition:background .15s;" style-hover="background:var(--surface)">
+              <span style="font-family:var(--fu);font-size:12px;color:var(--muted);">{{ post.date }}</span>
+              <span style="font-family:var(--fd);font-weight:500;font-size:20px;">{{ post.title }}</span>
+              <span style="font-family:var(--fu);font-size:11px;color:var(--accent);text-transform:uppercase;">{{ post.tag }} →</span>
+            </a>
+          </sc-for>
+        </div>
+        <div style="margin-top:40px;border:1px solid var(--border);background:#050505;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface);">
+            <span style="font-family:var(--fu);font-size:12px;color:var(--muted);">agent_loop.py</span>
+            <button onClick="{{ copyCode }}" style="all:unset;cursor:pointer;font-family:var(--fu);font-size:11px;color:{{ copied ? '#050505' : 'var(--accent)' }};background:{{ copied ? 'var(--primary)' : 'transparent' }};border:1px solid {{ copied ? 'var(--primary)' : 'var(--border)' }};padding:4px 10px;text-transform:uppercase;">{{ copyLabel }}</button>
+          </div>
+          <pre style="margin:0;padding:20px;font-family:var(--fu);font-size:13px;line-height:1.6;color:var(--text);overflow-x:auto;"><span style="color:var(--muted);"># self-healing test agent</span>
+<span style="color:var(--accent);">graph</span> = StateGraph(TestState)
+graph.add_node(<span style="color:var(--primary);">"generate"</span>, rag_generate)
+graph.add_node(<span style="color:var(--primary);">"validate"</span>, execute_and_heal)
+graph.add_edge(<span style="color:var(--primary);">"generate"</span>, <span style="color:var(--primary);">"validate"</span>)
+agent = graph.compile()</pre>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- SYNDICATE -->
+    <sc-if value="{{ isSynd }}" hint-placeholder-val="{{ false }}">
+      <section style="padding:56px;animation:fadeUp .4s ease both;">
+        <div style="font-family:var(--fu);font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;">guest@portfolio:~$ netstat --syndicate</div>
+        <h2 style="font-family:var(--fd);font-weight:700;font-size:40px;text-transform:uppercase;margin:0 0 8px;">Syndicate</h2>
+        <div style="display:flex;gap:32px;font-family:var(--fu);font-size:12px;color:var(--muted);margin-bottom:32px;">
+          <span>NODES CONNECTED: <span style="color:var(--primary);">12</span></span>
+          <span>NETWORK UPTIME: <span style="color:var(--primary);">99.9%</span></span>
+        </div>
+        <h3 style="font-family:var(--fu);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin:0 0 16px;">// endorsements</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;">
+          <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="2">
+            <div style="border:1px solid var(--border);background:var(--surface);padding:24px;">
+              <p style="font-family:var(--fm);font-style:italic;font-size:14px;line-height:1.55;color:var(--text);margin:0 0 16px;">"{{ q.quote }}"</p>
+              <div style="font-family:var(--fd);font-weight:700;font-size:14px;text-transform:uppercase;">{{ q.name }}</div>
+              <div style="font-family:var(--fu);font-size:11px;color:var(--muted);">{{ q.role }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <h3 style="font-family:var(--fu);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin:0 0 16px;">// work_with_me</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);">
+          <sc-for list="{{ links }}" as="l" hint-placeholder-count="4">
+            <a href="{{ l.url }}" style="text-decoration:none;color:inherit;background:var(--surface);padding:24px;display:flex;flex-direction:column;gap:8px;transition:background .15s;" style-hover="background:var(--surface2)">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-family:var(--fd);font-weight:700;font-size:18px;text-transform:uppercase;">{{ l.name }}</span>
+                <span style="font-family:var(--fu);font-size:11px;background:var(--accent);color:#050505;padding:3px 8px;text-transform:uppercase;">{{ l.cta }}</span>
+              </div>
+              <div style="font-family:var(--fu);font-size:12px;color:var(--primary);">{{ l.handle }}</div>
+              <p style="font-size:12px;line-height:1.5;color:var(--muted);margin:0;">{{ l.desc }}</p>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- TRANSMISSION -->
+    <sc-if value="{{ isTrans }}" hint-placeholder-val="{{ false }}">
+      <section style="padding:56px;animation:fadeUp .4s ease both;">
+        <div style="border:1px solid var(--border);background:#050505;min-height:520px;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--border);background:var(--surface);">
+            <span style="width:11px;height:11px;border:1px solid var(--muted);"></span>
+            <span style="width:11px;height:11px;border:1px solid var(--muted);"></span>
+            <span style="width:11px;height:11px;border:1px solid var(--muted);"></span>
+            <span style="font-family:var(--fu);font-size:12px;color:var(--muted);margin-left:8px;">contact — guest@portfolio</span>
+          </div>
+          <div onClick="{{ focusInput }}" style="flex:1;padding:20px;font-family:var(--fm);font-size:14px;line-height:1.7;cursor:text;">
+            <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="4">
+              <sc-if value="{{ ln.href }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ ln.href }}" target="_blank" rel="noopener" style="display:block;color:{{ ln.color }};white-space:pre-wrap;text-decoration:underline;text-underline-offset:3px;" style-hover="color:var(--accent)">{{ ln.text }}</a>
+              </sc-if>
+              <sc-if value="{{ ln.plain }}" hint-placeholder-val="{{ true }}">
+                <div style="color:{{ ln.color }};white-space:pre-wrap;">{{ ln.text }}</div>
+              </sc-if>
+            </sc-for>
+            <form onSubmit="{{ runCmd }}" style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+              <span style="color:var(--primary);white-space:nowrap;">guest@portfolio:~$</span>
+              <input ref="{{ inputRef }}" value="{{ cmd }}" onChange="{{ onType }}" autoComplete="off" spellCheck="false" style="all:unset;flex:1;color:var(--text);caret-color:var(--primary);" placeholder="type 'help'">
+            </form>
+          </div>
+        </div>
+        <div style="font-family:var(--fu);font-size:11px;color:var(--muted);margin-top:16px;letter-spacing:.06em;">TRY: help · contact · social · book · clear</div>
+      </section>
+    </sc-if>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    screen: "home",
+    copied: false,
+    cmd: "",
+    lines: [
+      { text: "Contact terminal v2.6 — connection established.", color: "var(--muted)" },
+      { text: "guest@portfolio:~$ contact", color: "var(--text)" },
+      { text: "  email : uthamkmr@gmail.com", color: "var(--primary)", href: "mailto:uthamkmr@gmail.com" },
+      { text: "  github : github.com/utham9", color: "var(--primary)", href: "https://github.com/utham9" },
+      { text: "  linkedin : linkedin.com/in/uthamkmr", color: "var(--primary)", href: "https://www.linkedin.com/in/uthamkmr" },
+      { text: "  phone : +91 99729 74000", color: "var(--muted)" },
+      { text: "Type 'help' for more commands.", color: "var(--muted)" },
+    ],
+  };
+  inputRef = React.createRef();
+  go(s) { this.setState({ screen: s }); }
+  push(arr) { this.setState(st => ({ lines: [...st.lines, ...arr] })); }
+  runCmd = (e) => {
+    e.preventDefault();
+    const raw = (this.state.cmd || "").trim().toLowerCase();
+    const echo = { text: "guest@portfolio:~$ " + (this.state.cmd || ""), color: "var(--text)" };
+    let out = [];
+    if (raw === "help") out = [
+      { text: "  contact   → email + PGP fingerprint", color: "var(--accent)" },
+      { text: "  social    → GitHub / LinkedIn", color: "var(--accent)" },
+      { text: "  book      → open a discovery call", color: "var(--accent)" },
+      { text: "  clear     → wipe terminal", color: "var(--accent)" },
+    ];
+    else if (raw === "contact") out = [
+      { text: "  email : uthamkmr@gmail.com", color: "var(--primary)", href: "mailto:uthamkmr@gmail.com" },
+      { text: "  phone : +91 99729 74000", color: "var(--primary)" },
+      { text: "  pgp   : 9F2A 4C71 D3E8 6B05 · uthamkumar.com", color: "var(--muted)" },
+    ];
+    else if (raw === "social") out = [
+      { text: "  github   : github.com/utham9", color: "var(--primary)", href: "https://github.com/utham9" },
+      { text: "  linkedin : linkedin.com/in/uthamkmr", color: "var(--primary)", href: "https://www.linkedin.com/in/uthamkmr" },
+    ];
+    else if (raw === "book") out = [
+      { text: "  Opening scheduling terminal...", color: "var(--muted)" },
+      { text: "  → topmate.io  ·  freelancer.com", color: "var(--accent)" },
+    ];
+    else if (raw === "clear") { this.setState({ lines: [], cmd: "" }); return; }
+    else if (raw === "") { this.setState({ cmd: "" }); return; }
+    else out = [{ text: "  command not found: " + raw + " (try 'help')", color: "#ff4d4d" }];
+    this.setState(st => ({ lines: [...st.lines, echo, ...out], cmd: "" }));
+  };
+  renderVals() {
+    const s = this.state.screen;
+    const navItem = (id, label, idx) => {
+      const active = s === id;
+      return { label, idx, active, go: () => this.go(id),
+        edge: active ? "var(--accent)" : "transparent",
+        bg: active ? "var(--surface2)" : "transparent",
+        fg: active ? "var(--accent)" : "var(--text)" };
+    };
+    return {
+      isHome: s === "home", isAbout: s === "about", isArchive: s === "archive",
+      isExp: s === "experience", isSkills: s === "skills", isBrain: s === "brainwaves",
+      isSynd: s === "syndicate", isTrans: s === "transmission",
+      nav: [
+        navItem("home", "Home", "00"),
+        navItem("about", "About", "01"),
+        navItem("archive", "Projects", "02"),
+        navItem("experience", "Experience", "03"),
+        navItem("skills", "Skills", "04"),
+        navItem("brainwaves", "Brainwaves", "05"),
+        navItem("syndicate", "Syndicate", "06"),
+        navItem("transmission", "Contact", "07"),
+      ],
+      competencies: ["Agentic systems & orchestration (LangGraph)", "LLM integrations (OpenAI, Gemini, Claude)", "RAG architectures", "Prompt engineering for agents", "AI-driven test automation & coverage", "Validation of AI-generated code", "CI/CD & DevOps automation", "Scalable platform & framework design", "Observability & metrics", "Service virtualization & API mocking", "Cloud (AWS, Docker)", "Technical mentorship & leadership"],
+      education: [
+        { title: "B.E. Electronics & Instrumentation", org: "Sathyabama University, Chennai", year: "2009" },
+        { title: "AWS Certified Cloud Practitioner", org: "Amazon Web Services", year: "Cert" },
+        { title: "CRISC — Risk & Information Systems Control", org: "ISACA", year: "Cert" },
+        { title: "CA Accredited Service Virtualization Associate", org: "LISA / DevTest", year: "Cert" },
+        { title: "Accelerating Change Readiness & Agility", org: "UC Berkeley Executive Education", year: "Exec Ed" },
+      ],
+      achievements: [
+        "Reduced regression cycle time 40% and build verification 75% via AI-augmented automation, parallel execution and custom Jenkins CI — a 3x reduction in testing effort.",
+        "Cut external service dependencies 70% with a reusable Java-based API mocking framework adopted across teams.",
+        "Revamped risk identification and escalation, reducing incident resolution time 30%.",
+        "SPOT Award for Test Architect (HPE) · METS Star Performer (Capgemini) · Best Individual Contributor (Wipro).",
+      ],
+      experience: [
+        { role: "Vice President, Quality Engineering", org: "A leading retail bank (current)", place: "Retail banking platforms — Web, Android, iOS", dates: "Aug 2018 – Present", bullets: [
+          "Architected a stateful multi-agent test-automation platform with LangGraph, agentifying core SDLC testing — autonomous script generation, execution validation and edge-case discovery.",
+          "Engineered context-aware RAG agents that ingest PRDs, docs and code schemas to auto-generate self-healing test scripts.",
+          "Integrated LLMs (Gemini, Claude/Sonnet, OpenAI API) with Selenium, Playwright and Appium — cutting testing cycle time by 40%.",
+          "Drove adoption of AI-augmented workflows across a 25+ engineer org; set coding standards, patterns and reviews.",
+          "Embedded automated quality gates into CI/CD; automated Android/iOS build verification, reducing verification time by 75%.",
+          "Built observability — Grafana, ReportPortal.io, Jira/Zephyr — for metrics-based decisions on automation effectiveness.",
+        ]},
+        { role: "Specialist", org: "DXC Technology (formerly HPE) — American Airlines", place: "Bangalore / Dallas", dates: "Sep 2016 – Jul 2018", bullets: [
+          "Built a test-automation framework with CA DevTest and Java covering web UI and web services.",
+          "Automated the execution environment with Docker and GitHub on IBM Bluemix.",
+          "Designed virtual services for REST, IBM MQ and RabbitMQ for stress and performance testing at scale.",
+          "Implemented Node.js/SoapUI mocking, cutting external dependencies and wiring virtualization into CI/CD.",
+        ]},
+        { role: "Senior Analyst", org: "Accenture — JP Morgan & Chase", place: "Bangalore / Bournemouth, UK", dates: "Jan 2014 – Sep 2016", bullets: [
+          "Developed a Selenium + TestNG page-object framework, improving maintainability and execution efficiency.",
+          "Implemented BDD with Java/Cucumber integrated with IBM MQ Series.",
+          "Created a CA LISA + MySQL data-virtualization solution across parallel workstreams; mentored juniors.",
+        ]},
+        { role: "Associate Consultant", org: "Capgemini India — ANZ", place: "Bangalore", dates: "Oct 2012 – Jan 2014", bullets: [
+          "Built a SOA test solution with LISA Test and service virtualization for complex orchestration.",
+          "Scaled virtual services (REST, TCP/IP) for performance and volume testing under high load.",
+        ]},
+        { role: "Project Engineer", org: "Wipro Technologies — Wal-Mart E-Commerce", place: "Bangalore", dates: "Mar 2010 – Sep 2012", bullets: [
+          "Developed a no-code SOA testing solution for TIBCO BW interfaces using iTKO LISA.",
+          "Tested JMS/EDI messages for order fulfilment with full traceability in Quality Center.",
+        ]},
+      ],
+      skillGroups: [
+        { name: "GenAI / Agentic AI", items: ["LangGraph", "RAG architectures", "OpenAI API", "Gemini", "Claude Code", "Prompt engineering", "Self-healing agents"] },
+        { name: "Languages", items: ["Java", "Python", "JavaScript", "TypeScript"] },
+        { name: "Test Automation", items: ["Playwright", "Selenium", "Appium", "WebDriver.io", "RestAssured", "Karate", "Cucumber", "TestNG"] },
+        { name: "DevOps / Cloud / SDLC", items: ["Jenkins", "Docker", "GitHub", "CI/CD", "AWS", "Selenium Grid"] },
+        { name: "APIs & Messaging", items: ["REST", "IBM MQ", "RabbitMQ", "TIBCO BW", "JMS", "SOA"] },
+        { name: "Service Virtualization", items: ["CA LISA / DevTest", "SoapUI", "Node.js mocking", "Data virtualization"] },
+        { name: "Observability & Reporting", items: ["Grafana", "ReportPortal.io", "Extent Reports", "Jira", "Zephyr"] },
+        { name: "Certifications", items: ["AWS Cloud Practitioner", "CRISC (ISACA)", "CA LISA/DevTest", "UC Berkeley Exec Ed"] },
+      ],
+      copied: this.state.copied,
+      copyLabel: this.state.copied ? "✓ copied" : "copy",
+      copyCode: () => {
+        const code = 'graph = StateGraph(TestState)\ngraph.add_node("generate", rag_generate)\ngraph.add_node("validate", execute_and_heal)\ngraph.add_edge("generate", "validate")\nagent = graph.compile()';
+        try { navigator.clipboard && navigator.clipboard.writeText(code); } catch (e) {}
+        this.setState({ copied: true });
+        clearTimeout(this._t); this._t = setTimeout(() => this.setState({ copied: false }), 1600);
+      },
+      cmd: this.state.cmd,
+      lines: this.state.lines.map(l => ({ ...l, plain: !l.href })),
+      inputRef: this.inputRef,
+      onType: (e) => this.setState({ cmd: e.target.value }),
+      runCmd: this.runCmd,
+      focusInput: () => this.inputRef.current && this.inputRef.current.focus(),
+      stats: [
+        { n: "14+", l: "Years engineering" },
+        { n: "25+", l: "Engineers led" },
+        { n: "40%", l: "Faster cycles" },
+        { n: "70%", l: "Fewer deps" },
+      ],
+      coreStack: ["LangGraph", "RAG", "OpenAI API", "Gemini", "Claude Code", "Python", "Java", "Playwright", "Selenium", "Appium", "Jenkins", "Docker", "AWS", "Grafana"],
+      projects: [
+        { metric: "−40% CYCLE TIME", title: "LangGraph Multi-Agent Test Platform", body: "Stateful multi-agent system that agentifies SDLC testing for enterprise retail banking — autonomous generation, execution validation and edge-case discovery.", stack: ["LangGraph", "Claude", "Playwright", "Appium"] },
+        { metric: "SELF-HEALING", title: "Context-Aware RAG Test Generation", body: "RAG agents ingest PRDs, docs and code schemas to auto-generate production-grade, self-healing test scripts, with validation on all AI-generated assets.", stack: ["RAG", "OpenAI", "Gemini", "Java"] },
+        { metric: "−70% DEPENDENCIES", title: "Java API Mocking & Data Virtualization", body: "Reusable Java mocking and data-virtualization framework adopted across teams, cutting third-party dependencies and speeding up test turnaround.", stack: ["Java", "Virtualization", "REST", "IBM MQ"] },
+        { metric: "−75% VERIFY TIME", title: "Automated Quality Gates & Observability", body: "CI/CD quality gates flag regressions early, wired to Grafana / ReportPortal.io / Jira-Zephyr dashboards for measurable engineering impact.", stack: ["Jenkins", "Docker", "Grafana", "CI/CD"] },
+      ],
+      posts: [
+        { date: "2026-03-14", title: "Agentifying the SDLC", tag: "Agentic AI" },
+        { date: "2026-02-02", title: "RAG for QA: PRDs → Test Scripts", tag: "RAG" },
+        { date: "2026-01-09", title: "Scaling AI Testing Across 25+ Engineers", tag: "Leadership" },
+      ],
+      testimonials: [
+        { quote: "Utham reframed how our teams think about quality — from writing tests to orchestrating agents that write and heal them.", name: "Engineering Director", role: "Retail Banking Technology" },
+        { quote: "A rare leader — deeply hands-on with LLM tooling and able to scale it across a large organisation.", name: "Senior QE Manager", role: "Peer" },
+      ],
+      links: [
+        { name: "LinkedIn", handle: "in/uthamkmr", cta: "Connect", desc: "Career history, recommendations and posts on agentic quality engineering.", url: "https://www.linkedin.com/in/uthamkmr" },
+        { name: "GitHub", handle: "@utham9", cta: "Follow", desc: "Automation frameworks, agent experiments and open-source tinkering.", url: "https://github.com/utham9" },
+        { name: "Topmate", handle: "1:1 sessions", cta: "Book", desc: "Mentoring calls — test architecture, GenAI in QA, or career guidance.", url: "https://topmate.io/" },
+        { name: "Freelancer", handle: "Hire me", cta: "Hire", desc: "Consulting on test-automation platforms and AI-augmented quality.", url: "https://www.freelancer.com/" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
