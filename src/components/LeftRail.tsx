@@ -23,7 +23,18 @@ export function LeftRail() {
           {site.moniker}
           <span className="dot">.</span>
         </h1>
-        <div className="role-line">{site.role}</div>
+        <div className="role-line">
+          {site.role.split(".").map((part, i, arr) => (
+            <span key={i}>
+              {part}
+              {i < arr.length - 1 && (
+                <>
+                  .<wbr />
+                </>
+              )}
+            </span>
+          ))}
+        </div>
         <p className="bio">{site.bio}</p>
       </div>
 

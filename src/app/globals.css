@@ -123,13 +123,14 @@ body {
 }
 .status {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   margin-bottom: 12px;
 }
 .status-dot {
   width: 8px;
   height: 8px;
+  margin-top: 3px;
   background: var(--primary);
   border-radius: 50%;
   animation: pulse 2s infinite;
@@ -219,7 +220,8 @@ body {
   padding: 13px 28px;
   border-top: 1px solid var(--border);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 5px;
   font-family: var(--fu);
   font-size: 11px;
   color: var(--muted);
@@ -922,7 +924,7 @@ body {
    ============================================================ */
 @media (max-width: 1024px) {
   .shell {
-    grid-template-columns: 26% 74%;
+    grid-template-columns: 30% 70%;
   }
   .rail-header {
     padding: 32px 28px 20px;
