@@ -52,6 +52,9 @@ export const metadata: Metadata = {
   creator: site.name,
   publisher: site.name,
   robots: { index: true, follow: true },
+  verification: {
+    google: "RlGGQyGrIcMOpbfuyrm7YsSaFMe3AgZbgJVL2QYFieo",
+  },
   openGraph: {
     type: "website",
     url: SITE_URL,
