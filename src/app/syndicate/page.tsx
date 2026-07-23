@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { Screen } from "@/components/Screen";
 import { testimonials } from "@/lib/data";
 import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Syndicate",
+  description:
+    "Work with Utham Kumar — connect on LinkedIn, follow on GitHub, book a mentoring session on Topmate or hire for consulting on AI-augmented quality engineering.",
+  alternates: { canonical: "/syndicate" },
+};
 
 // // work_with_me — 2×2 link grid. Topmate/Freelancer are placeholder URLs (see site.ts).
 const links = [

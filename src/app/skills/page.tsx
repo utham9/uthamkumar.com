@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { Screen } from "@/components/Screen";
 import { skillGroups } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "Skills",
+  description:
+    "Utham Kumar's stack — GenAI/agentic AI (LangGraph, RAG, OpenAI, Gemini, Claude), test automation (Playwright, Selenium, Appium), DevOps, service virtualization and observability.",
+  alternates: { canonical: "/skills" },
+};
 
 export default function SkillsPage() {
   return (

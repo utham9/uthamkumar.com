@@ -19,7 +19,14 @@ export async function generateMetadata({
   return {
     title: `${post.title} — Brainwaves`,
     description: post.excerpt,
-    openGraph: { title: post.title, description: post.excerpt, type: "article" },
+    alternates: { canonical: `/brainwaves/${post.slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      authors: ["Utham Kumar N S"],
+    },
   };
 }
 
@@ -32,8 +39,26 @@ export default async function PostPage({
   const post = getPost(slug);
   if (!post) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: "Utham Kumar N S",
+      url: "https://uthamkumar.com",
+    },
+    mainEntityOfPage: `https://uthamkumar.com/brainwaves/${post.slug}`,
+  };
+
   return (
     <Screen command={`cat brainwaves/${post.slug}.md`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link href="/brainwaves" className="back-link">
         ← cd ../brainwaves
       </Link>

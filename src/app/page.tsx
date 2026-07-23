@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { Screen } from "@/components/Screen";
 import { stats, coreStack } from "@/lib/data";
 import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: { absolute: "Utham Kumar — Lead Architect, Quality Engineering" },
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (

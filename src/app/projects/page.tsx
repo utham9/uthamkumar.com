@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { Screen } from "@/components/Screen";
 import { projects } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Projects by Utham Kumar — LangGraph multi-agent test platform, context-aware RAG test generation, Java API mocking and automated quality gates with observability.",
+  alternates: { canonical: "/projects" },
+};
 
 export default function ProjectsPage() {
   return (

@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { Screen } from "@/components/Screen";
 import { experience } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "Experience",
+  description:
+    "Utham Kumar's career — Vice President of Quality Engineering at a leading retail bank, with prior roles at DXC Technology, Accenture, Capgemini and Wipro.",
+  alternates: { canonical: "/experience" },
+};
 
 export default function ExperiencePage() {
   return (

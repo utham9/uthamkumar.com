@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Screen } from "@/components/Screen";
 import {
   aboutParagraphs,
@@ -5,6 +6,13 @@ import {
   achievements,
   education,
 } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "About Utham Kumar N S — engineering leader with 14+ years designing scalable test-automation platforms and pioneering AI-augmented, agentic quality ecosystems.",
+  alternates: { canonical: "/about" },
+};
 
 export default function AboutPage() {
   return (
