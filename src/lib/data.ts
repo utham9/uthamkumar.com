@@ -92,6 +92,74 @@ export const projects = [
   },
 ];
 
+// Public GitHub repositories, rendered as linked cards under // open_source.
+// Source of truth is github.com/utham9 — refresh this list when repos are added.
+export const repos = [
+  {
+    name: "uthamkumar.com",
+    lang: "TypeScript · Next.js",
+    body: "This site. Cyber-constructivist portfolio and résumé — App Router, Tailwind v4, statically generated blog and an interactive contact terminal.",
+    stack: ["Next.js 15", "Tailwind v4", "Vercel"],
+    url: "https://github.com/utham9/uthamkumar.com",
+  },
+  {
+    name: "openclaw-admin",
+    lang: "Shell · Claude Skill",
+    body: "Claude Code skill for administering a self-hosted OpenClaw agent — models and providers, cron jobs, Google Workspace, secrets, VPN split-tunnel egress and config backups.",
+    stack: ["Claude Code", "Shell", "SSH"],
+    url: "https://github.com/utham9/openclaw-admin",
+  },
+  {
+    name: "ai-job-hunter",
+    lang: "Python · Agents",
+    body: "Agent plugin that searches job boards, tailors résumés and preps interviews — skills-driven, with a local store and pluggable board adapters.",
+    stack: ["Python", "Agents", "Automation"],
+    url: "https://github.com/utham9/ai-job-hunter",
+  },
+  {
+    name: "ai-learning-path",
+    lang: "React · HTML",
+    body: "Interactive AI-generalist roadmap — six phases across prompt engineering, LLM APIs, RAG, agent orchestration, evals and production reliability. No build step.",
+    stack: ["React", "GitHub Pages"],
+    url: "https://github.com/utham9/ai-learning-path",
+  },
+  {
+    name: "claude-skills",
+    lang: "Claude Code Skills",
+    body: "Custom Claude Code skills, including a regression-test post-mortem that pulls Jira and Zephyr execution data into an executive-ready QA report.",
+    stack: ["Claude Code", "Jira", "Zephyr"],
+    url: "https://github.com/utham9/claude-skills",
+  },
+  {
+    name: "manager-dashboard-spfx",
+    lang: "TypeScript · SPFx",
+    body: "SharePoint Framework React web part rendering a configurable manager dashboard from SharePoint lists and Excel via Microsoft Graph — pivot summaries plus bar, line and pie charts.",
+    stack: ["TypeScript", "React", "Chart.js"],
+    url: "https://github.com/utham9/manager-dashboard-spfx",
+  },
+  {
+    name: "bddapi",
+    lang: "Java · BDD",
+    body: "BDD-driven API test framework — CSV-backed test data management, caching, environment property resolution and pluggable reporting adapters.",
+    stack: ["Java", "Cucumber", "REST"],
+    url: "https://github.com/utham9/bddapi",
+  },
+  {
+    name: "testng-extent",
+    lang: "Java · Reporting",
+    body: "Drop-in TestNG listener that wires Extent Reports into any suite — thread-safe test manager, report service singleton and HTML configuration.",
+    stack: ["Java", "TestNG", "Extent"],
+    url: "https://github.com/utham9/testng-extent",
+  },
+  {
+    name: "utham-blog",
+    lang: "TypeScript · Next.js",
+    body: "Statically generated Markdown blog on Next.js — remark and gray-matter pipeline over front-matter posts. Built from the Next.js blog-starter.",
+    stack: ["Next.js", "Markdown", "remark"],
+    url: "https://github.com/utham9/utham-blog",
+  },
+];
+
 // ---- Experience ----
 // The first role's employer name is intentionally withheld (see PRIVACY note above).
 export const experience = [
@@ -174,10 +242,3 @@ graph.add_node("generate", rag_generate)
 graph.add_node("validate", execute_and_heal)
 graph.add_edge("generate", "validate")
 agent = graph.compile()`;
-
-// ---- Syndicate ----
-// TODO: Placeholder testimonials — replace with real, attributed endorsements.
-export const testimonials = [
-  { quote: "Utham reframed how our teams think about quality — from writing tests to orchestrating agents that write and heal them.", name: "Engineering Director", role: "Retail Banking Technology" },
-  { quote: "A rare leader — deeply hands-on with LLM tooling and able to scale it across a large organisation.", name: "Senior QE Manager", role: "Peer" },
-];

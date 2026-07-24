@@ -16,17 +16,11 @@ export const site = {
 
   email: "uthamkmr@gmail.com",
   phone: "+91 99729 74000",
-  pgp: "9F2A 4C71 D3E8 6B05 · uthamkumar.com",
 
   github: "https://github.com/utham9",
   githubHandle: "github.com/utham9",
   linkedin: "https://www.linkedin.com/in/uthamkmr",
   linkedinHandle: "linkedin.com/in/uthamkmr",
-
-  // TODO: Replace with the exact Topmate profile URL once confirmed with Utham.
-  topmate: "https://topmate.io/",
-  // TODO: Replace with the exact Freelancer profile URL once confirmed with Utham.
-  freelancer: "https://www.freelancer.com/",
 
   // Static asset. Currently wired to the résumé PDF committed at project root
   // (copied into /public). TODO: swap for the final résumé export when supplied.

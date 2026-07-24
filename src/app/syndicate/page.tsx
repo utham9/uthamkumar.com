@@ -1,44 +1,43 @@
 import type { Metadata } from "next";
 import { Screen } from "@/components/Screen";
-import { testimonials } from "@/lib/data";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Syndicate",
   description:
-    "Work with Utham Kumar — connect on LinkedIn, follow on GitHub, book a mentoring session on Topmate or hire for consulting on AI-augmented quality engineering.",
+    "Work with Utham Kumar — connect on LinkedIn, follow on GitHub, email directly or download the résumé.",
   alternates: { canonical: "/syndicate" },
 };
 
-// // work_with_me — 2×2 link grid. Topmate/Freelancer are placeholder URLs (see site.ts).
+// // work_with_me — 2×2 link grid. Every destination is a real, verified link.
 const links = [
   {
     name: "LinkedIn",
-    handle: "in/uthamkmr",
+    handle: site.linkedinHandle,
     cta: "Connect",
     desc: "Career history, recommendations and posts on agentic quality engineering.",
     url: site.linkedin,
   },
   {
     name: "GitHub",
-    handle: "@utham9",
+    handle: site.githubHandle,
     cta: "Follow",
     desc: "Automation frameworks, agent experiments and open-source tinkering.",
     url: site.github,
   },
   {
-    name: "Topmate",
-    handle: "1:1 sessions",
-    cta: "Book",
-    desc: "Mentoring calls — test architecture, GenAI in QA, or career guidance.",
-    url: site.topmate,
+    name: "Email",
+    handle: site.email,
+    cta: "Write",
+    desc: "Consulting, speaking or mentoring — the most direct line to me.",
+    url: `mailto:${site.email}`,
   },
   {
-    name: "Freelancer",
-    handle: "Hire me",
-    cta: "Hire",
-    desc: "Consulting on test-automation platforms and AI-augmented quality.",
-    url: site.freelancer,
+    name: "Résumé",
+    handle: "PDF · download",
+    cta: "Get",
+    desc: "Full history, achievements and certifications in a printable one-pager.",
+    url: site.resumePdf,
   },
 ];
 
@@ -48,26 +47,7 @@ export default function SyndicatePage() {
       <h2 className="h-screen-title" style={{ marginBottom: "8px" }}>
         Syndicate
       </h2>
-      <div className="synd-stats">
-        <span>
-          NODES CONNECTED: <span className="num">12</span>
-        </span>
-        <span>
-          NETWORK UPTIME: <span className="num">99.9%</span>
-        </span>
-      </div>
-
-      <h3 className="h-sub">// endorsements</h3>
-      {/* TODO: replace placeholder testimonials with real, attributed endorsements. */}
-      <div className="tcard-grid">
-        {testimonials.map((q) => (
-          <div className="tcard" key={q.name}>
-            <p className="tquote">&ldquo;{q.quote}&rdquo;</p>
-            <div className="tname">{q.name}</div>
-            <div className="trole">{q.role}</div>
-          </div>
-        ))}
-      </div>
+      <p className="lede">Where to find me, and how to start a conversation.</p>
 
       <h3 className="h-sub">// work_with_me</h3>
       <div className="grid-hair">

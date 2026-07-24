@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Screen } from "@/components/Screen";
-import { projects } from "@/lib/data";
+import { projects, repos } from "@/lib/data";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Projects by Utham Kumar — LangGraph multi-agent test platform, context-aware RAG test generation, Java API mocking and automated quality gates with observability.",
+    "Projects by Utham Kumar — LangGraph multi-agent test platform, context-aware RAG test generation, Java API mocking, automated quality gates, plus open-source repositories on GitHub.",
   alternates: { canonical: "/projects" },
 };
 
@@ -36,6 +37,47 @@ export default function ProjectsPage() {
               </div>
             </div>
           </article>
+        ))}
+      </div>
+
+      {/* Public repositories — every card links straight to GitHub. */}
+      <h3 className="h-sub">// open_source</h3>
+      <p className="lede lede--sub">
+        Public repositories on{" "}
+        <a
+          className="inline-link"
+          href={site.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {site.githubHandle}
+        </a>
+        .
+      </p>
+
+      <div className="repo-grid">
+        {repos.map((r) => (
+          <a
+            className="repo-card"
+            key={r.name}
+            href={r.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="repo-head">
+              <span className="repo-lang">{r.lang}</span>
+              <span className="repo-arrow">↗</span>
+            </div>
+            <h4 className="repo-name">{r.name}</h4>
+            <p className="repo-desc">{r.body}</p>
+            <div className="tag-row tag-row--sm">
+              {r.stack.map((t) => (
+                <span className="tag tag--xs" key={t}>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </a>
         ))}
       </div>
     </Screen>

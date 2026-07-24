@@ -20,8 +20,9 @@ function resolve(raw: string): Line[] | "clear" {
   switch (raw) {
     case "help":
       return [
-        { text: "  contact   → email + PGP fingerprint", color: "var(--accent)" },
+        { text: "  contact   → email + phone", color: "var(--accent)" },
         { text: "  social    → GitHub / LinkedIn", color: "var(--accent)" },
+        { text: "  resume    → download the PDF", color: "var(--accent)" },
         { text: "  book      → open a discovery call", color: "var(--accent)" },
         { text: "  clear     → wipe terminal", color: "var(--accent)" },
       ];
@@ -29,17 +30,24 @@ function resolve(raw: string): Line[] | "clear" {
       return [
         { text: `  email : ${site.email}`, color: "var(--primary)", href: `mailto:${site.email}` },
         { text: `  phone : ${site.phone}`, color: "var(--primary)" },
-        { text: `  pgp   : ${site.pgp}`, color: "var(--muted)" },
       ];
     case "social":
       return [
         { text: `  github   : ${site.githubHandle}`, color: "var(--primary)", href: site.github },
         { text: `  linkedin : ${site.linkedinHandle}`, color: "var(--primary)", href: site.linkedin },
       ];
+    case "resume":
+      return [
+        { text: `  → ${site.domain}${site.resumePdf}`, color: "var(--accent)", href: site.resumePdf },
+      ];
     case "book":
       return [
-        { text: "  Opening scheduling terminal...", color: "var(--muted)" },
-        { text: "  → topmate.io  ·  freelancer.com", color: "var(--accent)", href: site.topmate },
+        { text: "  Opening mail client...", color: "var(--muted)" },
+        {
+          text: `  → ${site.email}  ·  subject: discovery call`,
+          color: "var(--accent)",
+          href: `mailto:${site.email}?subject=Discovery%20call`,
+        },
       ];
     case "clear":
       return "clear";
